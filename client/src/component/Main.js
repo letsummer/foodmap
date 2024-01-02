@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Map from "./Map.js";
 import Add from "./Add.js";
-const { kakao } = window;
 
 function Main(){
     return(
         <div>
-            <Add></Add>
+            Main!
+            <Router>
+                <Routes>
+                    <Route path="/admin/add" element={<Add/>}/>
+                </Routes>
+            </Router>
         </div>
     );
 }
