@@ -9,6 +9,7 @@ function Main(){
             Main!
             <Router>
                 <Routes>
+                    <Route path="/" element={<Map/>}/>
                     <Route path="/admin/add" element={<Add/>}/>
                 </Routes>
             </Router>
