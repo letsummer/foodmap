@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 // import "dotenv/config"
 const { kakao } = window;
 
-function Form({searchPlace}){
+function Form({isCheck, searchPlace}){
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [address, setAddr] = useState("");
@@ -11,6 +11,7 @@ function Form({searchPlace}){
     const [coord, setCoord] = useState([]);
     const [info, setInfo] = useState("");
 
+    console.log(`isChecked? `, isCheck);
     const useData = {
         name,
         address,
@@ -18,8 +19,19 @@ function Form({searchPlace}){
         coord,
         info
     };
+
+    const onChangeName = (e) => {
+        setName(e.target.value);
+    }
+
+    const onChangePhone = (e) => {
+        setPhone(e.target.value);
+    }
+
     const submitBtn = (e) =>{
         e.preventDefault();
+        console.log(`clicked 제출`);
+        
         fetch("http://localhost:5000/api/list/",{
             method: "post",
             headers: {
@@ -31,11 +43,12 @@ function Form({searchPlace}){
         
         return navigate("/");
     }
-    useEffect(() => {
+
+    const searchingPlacename = ()=>{
         const infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
         const container = document.getElementById('map')
         const options = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667),
+            center: new kakao.maps.LatLng(37.53978115795, 127.069482948761),
             level: 3,
         }
         const map = new kakao.maps.Map(container, options)
@@ -80,8 +93,69 @@ function Form({searchPlace}){
             });
             
         }
-        
-    }, [searchPlace]);
+    }
+    const searchingAddress = () =>{
+        const container = document.getElementById('map')
+        const options = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+        };  
+
+        // 지도를 생성합니다    
+        const map = new kakao.maps.Map(container, options)
+
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new kakao.maps.services.Geocoder();
+
+        // 지도를 클릭한 위치에 표출할 마커입니다
+        var marker = new kakao.maps.Marker({ 
+            // 지도 중심좌표에 마커를 생성합니다 
+            position: map.getCenter() 
+        }); 
+        // 지도에 마커를 표시합니다
+        marker.setMap(map);
+
+        // 지도에 클릭 이벤트를 등록합니다
+        // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+        kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+            
+            // 클릭한 위도, 경도 정보를 가져옵니다 
+            var latlng = mouseEvent.latLng; 
+            
+            // 마커 위치를 클릭한 위치로 옮깁니다
+            marker.setPosition(latlng);
+            let lat = latlng.getLat();
+            let lng = latlng.getLng();
+            var coord = new kakao.maps.LatLng(lat, lng);
+            var callback = function(result, status) {
+                if (status === kakao.maps.services.Status.OK) {
+                    console.log(`주소: `, result[0].address);
+                    // setName(result[0].address.region_3depth_name);
+                    setAddr(result[0].address.address_name);
+                    // setPhone("");
+                    setCoord([lng, lat]);
+                    // setInfo("");
+                }
+            };
+
+            geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+
+        });
+    }
+
+    const searchingType = () =>{
+        if(isCheck===true)
+            searchingAddress();
+        else
+            searchingPlacename();
+        setName("");
+        setAddr("");
+        setPhone("");
+        console.log(`searchingType이 작동했음!`);
+    }
+    useEffect(() => {
+        searchingType();
+    }, [searchPlace, isCheck]);
 
     
 
@@ -96,12 +170,12 @@ function Form({searchPlace}){
                 }}>
             </div>
             <form id="addform" method="post" onSubmit={submitBtn}>
-                <input id="name" type="text" placeholder="가게명" 
-                    value={name} disabled/>
+                <input id="name" type="text" placeholder="가게명" onChange={onChangeName}
+                    value={name} disabled={!isCheck}/>
                 <input id="addr" type="text" placeholder="도로명 주소" 
                     value={address} disabled/>
-                <input id="phone" type="text" placeholder="연락처" 
-                    value={phone} disabled/>
+                <input id="phone" type="text" placeholder="연락처" onChange={onChangePhone}
+                    value={phone} disabled={!isCheck}/>
                 <button type="submit">제출</button>
             </form>
         </div>
