@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 const placeSchema = new mongoose.Schema({
     name: { type: String, required: true },
     address: String,
-    location: String,
-    // views: { type: Number, default: 0 },
+    phone: String,
+    coord: [String],
+    info: String,
     hashtag: [String],
     twit: [String],
     createdTime: Date,
