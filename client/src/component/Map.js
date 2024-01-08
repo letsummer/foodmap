@@ -75,14 +75,15 @@ function Map(){
                 title : positions[i].name, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
                 image : markerImage // 마커 이미지 
             });
-            console.log(positions[i]);
+            const isValidInfo = (positions[i].info=="")? "" : `<p><a href=${positions[i].info} target="_blank">카카오맵에서 보기</a></p>`;
+            // console.log(positions[i], isValidInfo);
             let content =
                 `<div style="width:300px; height:200px;">
                     <strong><a href="/place/${positions[i].id}" target="_blank">${positions[i].name}</a></strong>
                     <p>${positions[i].address}</p>
                     <p>${positions[i].phone}</p>
-                    <p><a href=${positions[i].info} target="_blank">카카오맵에서 보기</a></p>
-                </div>`;
+                ` + isValidInfo +
+                `</div>`;
             let iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
 
             // 인포윈도우를 생성합니다
