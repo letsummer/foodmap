@@ -16,7 +16,7 @@ function Main(){
             <Router>
                 <nav>
                     <ul>
-                        <li><Link to={`${process.env.REACT_APP_PUBLIC_URL}`}>홈</Link></li>
+                        <li><Link to={`/`}>홈</Link></li>
                         <li><Link to={`${process.env.REACT_APP_PUBLIC_URL}/admin/add`}>요청</Link></li>
                         <li><Link to={`${process.env.REACT_APP_PUBLIC_URL}/admin/list`}>목록</Link></li>
                         <li><Link to={`${process.env.REACT_APP_PUBLIC_URL}/admin/checklist`}>요청목록(미등록상태)</Link></li>
