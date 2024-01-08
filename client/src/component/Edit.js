@@ -29,7 +29,7 @@ function Edit() {
     }
 
     const getEditpage = () =>{
-        fetch(`http://localhost:5000/api/place/${id}`)
+        fetch(`${process.env.REACT_APP_SERVER_URL}/api/place/${id}`)
         .then((response) => response.json())
         .then((json) => setEdit(json))
         .catch((error)=>console.log(error));
@@ -41,7 +41,7 @@ function Edit() {
         // e.preventDefault();
         console.log(`clicked!`);
 
-        fetch(`http://localhost:5000/api/place/${id}/edit`,{
+        fetch(`${process.env.REACT_APP_SERVER_URL}/api/place/${id}/edit`,{
             method: "POST",
             headers: {
                 "content-type": "application/json",

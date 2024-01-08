@@ -10,7 +10,7 @@ function Map(){
     const getData = async () => {
         const json = await (
           await fetch(
-            `http://localhost:5000/api/list`
+            `${process.env.REACT_APP_SERVER_URL}/api/list`
           )
         ).json();
         

@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// import "dotenv/config";
+// require("dotenv").config();
+
+// console.log(process.env.REACT_APP_SERVER_URL);
 
 function Btn({content}){
     const clkTest = (e)=>{
@@ -20,7 +24,7 @@ function Checklist(){
 
         if(window.confirm("지도에 추가하시겠습니까?")){
             // console.log(`data: `, item.name);
-            fetch("http://localhost:5000/api/list/",{
+            fetch(`${process.env.REACT_APP_SERVER_URL}/api/list/`,{
                 method: "post",
                 headers: {
                     "content-type": "application/json",
@@ -34,7 +38,7 @@ function Checklist(){
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/confirm`)
+        fetch(`${process.env.REACT_APP_SERVER_URL}/api/confirm`)
           .then((response) => response.json())
           .then((json) => {
             setData(json);

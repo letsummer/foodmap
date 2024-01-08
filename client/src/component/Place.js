@@ -35,7 +35,7 @@ function Place(){
     const [detail, setDetail] = useState([]);
 
     const placePage = () =>{
-        fetch(`http://localhost:5000/api/place/${id}`)
+        fetch(`${process.env.REACT_APP_SERVER_URL}/api/place/${id}`)
         .then((response) => response.json())
         .then((json) => setDetail(json))
         .catch((error)=>console.log(error));

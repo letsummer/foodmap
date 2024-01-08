@@ -10,7 +10,7 @@ function DataTable(){
         console.log(`clicked!: `, item);
         if(window.confirm("지도에서 삭제하시겠습니까?")){
             if(window.confirm("삭제 후 복구가 어렵습니다.")){
-                fetch("http://localhost:5000/api/list/",{
+                fetch(`${process.env.REACT_APP_SERVER_URL}/api/list/`,{
                     method: "delete",
                     headers: {
                         "content-type": "application/json",
@@ -29,7 +29,7 @@ function DataTable(){
         // navigate(`/place/${item._id}`);
         // if(window.confirm("지도에서 삭제하시겠습니까?")){
         //     if(window.confirm("삭제 후 복구가 어렵습니다.")){
-                fetch(`http://localhost:5000/api/place/${item._id}/edit`)
+                fetch(`${process.env.REACT_APP_SERVER_URL}/api/place/${item._id}/edit`)
                 .then((res) => res.json());
                 // console.log(`confirm: `, item);
                 return navigate(`/place/${item._id}/edit`);
@@ -38,7 +38,7 @@ function DataTable(){
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/list`)
+        fetch(`${process.env.REACT_APP_SERVER_URL}/api/list`)
           .then((response) => response.json())
           .then((json) => {
             setData(json);

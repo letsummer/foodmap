@@ -48,7 +48,7 @@ function Form({isCheck, searchPlace}){
         e.preventDefault();
         console.log(`clicked 제출`);
         
-        fetch("http://localhost:5000/api/confirm/",{
+        fetch(`${process.env.REACT_APP_SERVER_URL}/api/confirm/`,{
             method: "post",
             headers: {
                 "content-type": "application/json",
