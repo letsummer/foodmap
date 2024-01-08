@@ -13,7 +13,7 @@ console.log(`Main ><: `, process.env.REACT_APP_PUBLIC_URL);
 function Main(){
     return(
         <div>
-            <Router basename={process.env.REACT_APP_PUBLIC_URL}>
+            <Router>
                 <nav>
                     <ul>
                         <li><Link to="/">홈</Link></li>
