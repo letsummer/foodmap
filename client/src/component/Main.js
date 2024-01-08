@@ -8,12 +8,12 @@ import Place from "./Place.js";
 import Edit from "./Edit.js";
 import Admin from "./Admin.js";
 
-console.log(`Main ><: `, process.env.REACT_APP_PUBLIC_URL);
+console.log(`Main ^^: `, process.env.REACT_APP_PUBLIC_URL);
 
 function Main(){
     return(
         <div>
-            <Router>
+            <Router basename="/foodmap">
                 <nav>
                     <ul>
                         <li><Link to="/">홈</Link></li>
