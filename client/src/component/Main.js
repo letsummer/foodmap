@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 import Map from "./Map.js";
 import Add from "./Add.js";
 import List from "./List.js";
+import Checklist from "./Checklist.js";
 import Place from "./Place.js";
+import Admin from "./Admin.js";
 
 function Main(){
     return(
@@ -14,14 +16,17 @@ function Main(){
                         <li><Link to="/">홈</Link></li>
                         <li><Link to="/admin/add">요청</Link></li>
                         <li><Link to="/admin/list">목록</Link></li>
+                        <li><Link to="/admin/checklist">요청목록(미등록상태)</Link></li>
                         {/* <li><Link to="/"></Link></li> */}
                     </ul>
                 </nav>
                 <Routes>
                     <Route path="/" element={<Map/>}/>
                     <Route path="/place/:id" element={<Place/>}/>
+                    <Route path="/admin" element={<Admin/>}/>
                     <Route path="/admin/add" element={<Add/>}/>
                     <Route path="/admin/list" element={<List/>}/>
+                    <Route path="/admin/checklist" element={<Checklist/>}/>
                 </Routes>
             </Router>
         </div>
