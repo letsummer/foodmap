@@ -14,22 +14,7 @@ function Checklist(){
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
-    // const [name, setName] = useState("");
-    // const [address, setAddr] = useState("");
-    // const [phone, setPhone] = useState("");
-    // const [coord, setCoord] = useState([]);
-    // const [category, setCategory] = useState("");
-    // const [info, setInfo] = useState("");
-    
-    // const useData = {
-    //     name,
-    //     address,
-    //     phone,
-    //     coord,
-    //     category,
-    //     info
-    // };
-    
+        
     const addPlace = (item)=>{
         console.log(`clicked!: `, item);
 

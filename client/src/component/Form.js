@@ -3,6 +3,17 @@ import { useNavigate } from "react-router-dom";
 // import "dotenv/config"
 const { kakao } = window;
 
+function Map (){
+    return(
+        <div
+            id="map"
+            style={{
+                width: '500px',
+                height: '200px',
+            }}>
+        </div>
+    );
+}
 function Form({isCheck, searchPlace}){
     const navigate = useNavigate();
     const [name, setName] = useState("");
@@ -161,7 +172,7 @@ function Form({isCheck, searchPlace}){
         setName("");
         setAddr("");
         setPhone("");
-        console.log(`searchingType이 작동했음!`);
+        // console.log(`searchingType이 작동했음!`);
     }
     useEffect(() => {
         searchingType();
@@ -174,13 +185,7 @@ function Form({isCheck, searchPlace}){
     return(
         <div>
             <hr />
-            <div
-                id="map"
-                style={{
-                    width: '500px',
-                    height: '200px',
-                }}>
-            </div>
+            <Map></Map>
             <form id="addform" method="post" onSubmit={submitBtn}>
                 <input id="name" type="text" placeholder="가게명" onChange={onChangeName}
                     value={name} disabled={!isCheck}/>
