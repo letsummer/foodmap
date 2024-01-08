@@ -32,6 +32,12 @@ export const postList = async (req, res) => {
     return res.send("postList");
 }
 
+export const deleteList = async (req, res) => {
+    const preData = await PlaceModel.deleteOne({_id: req.body._id});
+    
+    return res.send("deleteList");
+}
+
 export const getConfirm = async (req, res) => {
     const list = await PrePlaceModel.find({});
     return res.send(list);

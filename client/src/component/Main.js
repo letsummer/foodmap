@@ -5,6 +5,7 @@ import Add from "./Add.js";
 import List from "./List.js";
 import Checklist from "./Checklist.js";
 import Place from "./Place.js";
+import Edit from "./Edit.js";
 import Admin from "./Admin.js";
 
 function Main(){
@@ -23,6 +24,7 @@ function Main(){
                 <Routes>
                     <Route path="/" element={<Map/>}/>
                     <Route path="/place/:id" element={<Place/>}/>
+                    <Route path="/place/:id/edit" element={<Edit/>}/>
                     <Route path="/admin" element={<Admin/>}/>
                     <Route path="/admin/add" element={<Add/>}/>
                     <Route path="/admin/list" element={<List/>}/>
