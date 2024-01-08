@@ -14,7 +14,7 @@ function Main(){
             <Router>
                 <nav>
                     <ul>
-                        <li><Link to="/">홈</Link></li>
+                        <li><Link to={`${process.env.REACT_APP_PUBLIC_URL}`}>홈</Link></li>
                         <li><Link to={`${process.env.REACT_APP_PUBLIC_URL}/admin/add`}>요청</Link></li>
                         <li><Link to={`${process.env.REACT_APP_PUBLIC_URL}/admin/list`}>목록</Link></li>
                         <li><Link to={`${process.env.REACT_APP_PUBLIC_URL}/admin/checklist`}>요청목록(미등록상태)</Link></li>
@@ -22,7 +22,7 @@ function Main(){
                     </ul>
                 </nav>
                 <Routes>
-                    <Route path="/" element={<Map/>}/>
+                    <Route path={`${process.env.REACT_APP_PUBLIC_URL}`} element={<Map/>}/>
                     <Route path="/place/:id" element={<Place/>}/>
                     <Route path="/place/:id/edit" element={<Edit/>}/>
                     <Route path="/admin" element={<Admin/>}/>
