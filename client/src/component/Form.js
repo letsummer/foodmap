@@ -26,7 +26,7 @@ function Form({isCheck, searchPlace}){
     // const selectList = ["음식점", "간식", "카페", "술집"];
     // const [, setSelected] = useState("");
 
-    console.log(`isChecked? `, isCheck);
+    // console.log(`isChecked? `, isCheck);
     const useData = {
         name,
         address,
@@ -46,7 +46,7 @@ function Form({isCheck, searchPlace}){
 
     const submitBtn = (e) =>{
         e.preventDefault();
-        console.log(`clicked 제출`);
+        // console.log(`clicked 제출`);
         
         fetch(`${process.env.REACT_APP_SERVER_URL}/api/confirm/`,{
             method: "post",
@@ -101,7 +101,7 @@ function Form({isCheck, searchPlace}){
                 // console.log(`장소 정보: `, place);
                 const str = place.category_name;
                 const detailCategory = str.split(" > ")[1];
-                console.log(`장소 정보: `, str);
+                // console.log(`장소 정보: `, str);
                 // console.log(`문자열 자르기:`, str.split(" > ")[1]);
 
                 setName(place.place_name);
@@ -150,7 +150,7 @@ function Form({isCheck, searchPlace}){
             var coord = new kakao.maps.LatLng(lat, lng);
             var callback = function(result, status) {
                 if (status === kakao.maps.services.Status.OK) {
-                    console.log(`주소: `, result[0].address);
+                    // console.log(`주소: `, result[0].address);
                     // setName(result[0].address.region_3depth_name);
                     setAddr(result[0].address.address_name);
                     // setPhone("");
@@ -179,7 +179,7 @@ function Form({isCheck, searchPlace}){
     }, [searchPlace, isCheck]);
 
     const selectChange = (e)=>{
-        console.log(`select change!!!`);
+        // console.log(`select change!!!`);
     }
 
     return(

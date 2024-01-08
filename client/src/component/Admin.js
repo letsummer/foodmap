@@ -8,12 +8,12 @@ function Grid({item}) {
     "https://twitter.com/dalgingO227/status/1701981015340953813",
     ];
 
-    useEffect(()=>{
-        console.log(`useEffect!`);    
-    });
+    // useEffect(()=>{
+    //     // console.log(`useEffect!`);    
+    // });
 
     // console.log(urls);
-    console.log(item);
+    // console.log(item);
     return (
         // urls.map((item, index)=>(
             <div>
@@ -29,14 +29,14 @@ function Admin() {
     const navigate = useNavigate();
     const [content, setContent] = useState("");
     const clkSubmit = ()=>{
-        console.log(`click!`);
+        // console.log(`click!`);
         
         return navigate("/admin/checklist");
     }
     
     const testFunc = (e)=>{
         setContent(e.target.value);
-        console.log(e.target.value);
+        // console.log(e.target.value);
     }
     
     return(

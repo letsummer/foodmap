@@ -39,7 +39,7 @@ function Edit() {
 
     const submitBtn = (item)=>{
         // e.preventDefault();
-        console.log(`clicked!`);
+        // console.log(`clicked!`);
 
         fetch(`${process.env.REACT_APP_SERVER_URL}/api/place/${id}/edit`,{
             method: "POST",

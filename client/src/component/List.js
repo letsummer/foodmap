@@ -7,7 +7,7 @@ function DataTable(){
     const [data, setData] = useState([]);
 
     const deletePlace = (item)=>{
-        console.log(`clicked!: `, item);
+        // console.log(`clicked!: `, item);
         if(window.confirm("지도에서 삭제하시겠습니까?")){
             if(window.confirm("삭제 후 복구가 어렵습니다.")){
                 fetch(`${process.env.REACT_APP_SERVER_URL}/api/list/`,{

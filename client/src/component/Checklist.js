@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function Btn({content}){
     const clkTest = (e)=>{
-        console.log(`click id: `, content);
+        // console.log(`click id: `, content);
     }
     return(
         <td><button onClick={clkTest} id={content._id}>클릭</button></td>
@@ -20,7 +20,7 @@ function Checklist(){
     const [data, setData] = useState([]);
         
     const addPlace = (item)=>{
-        console.log(`clicked!: `, item);
+        // console.log(`clicked!: `, item);
 
         if(window.confirm("지도에 추가하시겠습니까?")){
             // console.log(`data: `, item.name);

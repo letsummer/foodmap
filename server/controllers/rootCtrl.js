@@ -25,7 +25,7 @@ export const postList = async (req, res) => {
             coord,
             info,
         });
-        console.log(`데이터 생성 완료!`);
+        console.log(`지도에 데이터 추가 완료!`);
     } catch (error){
         return console.log(error);
     }
@@ -56,7 +56,7 @@ export const postConfirm = async (req, res) => {
             coord,
             info,
         });
-        console.log(`데이터 생성 완료!`);
+        console.log(`정상 요청!`);
     } catch (error){
         return console.log(error);
     }

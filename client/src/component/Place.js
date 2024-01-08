@@ -9,7 +9,7 @@ function Url(){
     ];
 
     urls.forEach((link)=>{
-        console.log(link);
+        // console.log(link);
     });
 
 
