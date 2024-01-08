@@ -24,7 +24,7 @@ function Main(){
                     </ul>
                 </nav>
                 <Routes>
-                    <Route path={`${process.env.REACT_APP_PUBLIC_URL}`} element={<Map/>}/>
+                    <Route path={`/`} element={<Map/>}/>
                     <Route path="/place/:id" element={<Place/>}/>
                     <Route path="/place/:id/edit" element={<Edit/>}/>
                     <Route path="/admin" element={<Admin/>}/>
