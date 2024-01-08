@@ -9,7 +9,11 @@ function Form({isCheck, searchPlace}){
     const [address, setAddr] = useState("");
     const [phone, setPhone] = useState("");
     const [coord, setCoord] = useState([]);
+    const [category, setCategory] = useState("");
     const [info, setInfo] = useState("");
+
+    // const selectList = ["음식점", "간식", "카페", "술집"];
+    // const [, setSelected] = useState("");
 
     console.log(`isChecked? `, isCheck);
     const useData = {
@@ -17,6 +21,7 @@ function Form({isCheck, searchPlace}){
         address,
         phone,
         coord,
+        category,
         info
     };
 
@@ -32,7 +37,7 @@ function Form({isCheck, searchPlace}){
         e.preventDefault();
         console.log(`clicked 제출`);
         
-        fetch("http://localhost:5000/api/list/",{
+        fetch("http://localhost:5000/api/confirm/",{
             method: "post",
             headers: {
                 "content-type": "application/json",
@@ -82,14 +87,19 @@ function Form({isCheck, searchPlace}){
             });
 
             kakao.maps.event.addListener(marker, 'click', ()=>{
-                console.log(`장소 정보: `, place);
+                // console.log(`장소 정보: `, place);
+                const str = place.category_name;
+                const detailCategory = str.split(" > ")[1];
+                console.log(`장소 정보: `, str);
+                // console.log(`문자열 자르기:`, str.split(" > ")[1]);
 
                 setName(place.place_name);
                 setAddr(place.road_address_name);
                 setPhone(place.phone);
                 setCoord([place.x, place.y]);
+                setCategory(detailCategory);
+                // setCategory(place.category_group_name);
                 setInfo(place.place_url);
-
             });
             
         }
@@ -157,7 +167,9 @@ function Form({isCheck, searchPlace}){
         searchingType();
     }, [searchPlace, isCheck]);
 
-    
+    const selectChange = (e)=>{
+        console.log(`select change!!!`);
+    }
 
     return(
         <div>
