@@ -8,6 +8,8 @@ import Place from "./Place.js";
 import Edit from "./Edit.js";
 import Admin from "./Admin.js";
 
+console.log(`Main: `, process.env.REACT_APP_PUBLIC_URL);
+
 function Main(){
     return(
         <div>
