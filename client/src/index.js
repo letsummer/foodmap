@@ -9,13 +9,13 @@ console.log(process.env.REACT_APP_PUBLIC_URL);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App/>
+  // <App/>
   // <Router>
-  // <Router basename={process.env.REACT_APP_PUBLIC_URL}>
-  //     <Routes>
-  //       <Route path="/" element={<App/>}/>
-  //     </Routes>
-  // </Router>
+  <Router basename={process.env.REACT_APP_PUBLIC_URL}>
+       <Routes>
+         <Route path="/" element={<App/>}/>
+       </Routes>
+   </Router>
 );
 
 // If you want to start measuring performance in your app, pass a function
