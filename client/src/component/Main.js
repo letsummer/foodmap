@@ -13,7 +13,7 @@ import Admin from "./Admin.js";
 function Main(){
     return(
         <div>
-            <Router basename="/foodmap">
+            <Router>
                 <nav>
                     <ul>
                         <li><Link to="/">홈</Link></li>
