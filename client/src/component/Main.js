@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { LoginContext } from "../context/Contexts.js";
 import Map from "./Map.js";
 import Add from "./Add.js";
 import List from "./List.js";
@@ -8,12 +9,25 @@ import Place from "./Place.js";
 import Edit from "./Edit.js";
 import Admin from "./Admin.js";
 import Join from "./Join.js";
-import Login from "./Login.js";
+// import Login from "./Login.js";
 
 function Main(){
     const [user, setUser] = useState("");
     const [isLogin, setIsLogin] = useState(false);
   
+    const logout = async () =>{
+        await fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/logout`,{
+            method: "POST",
+            credentials: "include",
+        })
+        .then((result)=>{
+            if(result.status === 200){
+                console.log(`logout 됐습니다.`);
+                // setIsLogin(false);
+            }
+        });
+    }
+
     useEffect(()=>{
       fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/login/success`,{
           method: "GET",
@@ -49,6 +63,7 @@ function Main(){
                         :""}
                     </Router>
                 </ul>
+                {isLogin? <button onClick={logout}>로그아웃</button> : ""}
             </nav>
             <Router>
                 <Routes>
@@ -56,11 +71,11 @@ function Main(){
                     <Route path="/place/:id" element={<Place/>}/>
                     <Route path="/place/:id/edit" element={<Edit/>}/>
                     <Route path="/join" element={<Join/>}/>
-                    <Route path="/admin" element={<Login/>}/>
+                    <Route path="/admin" element={<Admin isLogin={isLogin}/>}/>
                     {isLogin? <>
-                        <Route path="/admin/add" element={<Add/>}/>
-                        <Route path="/admin/list" element={<List/>}/>
-                        <Route path="/admin/checklist" element={<Checklist/>}/>
+                            <Route path="/admin/add" element={<Add/>}/>
+                            <Route path="/admin/list" element={<List/>}/>
+                            <Route path="/admin/checklist" element={<Checklist/>}/>
                     </>
                     :null
                     }

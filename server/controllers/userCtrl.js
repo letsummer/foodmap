@@ -61,15 +61,15 @@ export const postLogin = async (req, res) => {
     req.session.user = user;
 
     if(user&&ok&&userId==="admin"){
-        // req.session.userId = userId;
+        req.session.isAdmin = true;
         return res
             .status(200)
-            .json({confirm_message:"관리자입니다.", isAdmin:true, userAuth:true});
+            .json({confirm_message:"관리자입니다."});
     }
 
     return res
         .status(200)
-        .json({confirm_message:"환영합니다.", isAdmin:false, userAuth:true});
+        .json({confirm_message:"환영합니다."});
 }
 
 export const successLogin = (req, res) =>{

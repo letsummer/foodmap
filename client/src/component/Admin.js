@@ -27,26 +27,13 @@ function Grid({item}) {
 }
 
 
-function Admin() {
-    const navigate = useNavigate();
-    const [isLogin, setIsLogin] = useState(false);
-    const [user, setUser] = useState("");
+function Admin({isLogin}) {
     
-    const logout = async () =>{
-        await fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/logout`,{
-            method: "POST",
-            credentials: "include",
-        })
-        .then((result)=>{
-            if(result.status === 200){
-                console.log(`logout 됐습니다.`);
-            }
-        });
-    }
-
     return(
         <div>
-            <Login/>
+            {isLogin? 
+                <div>HI!</div>
+            : <Login/>}
         </div>
     )
 }

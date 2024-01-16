@@ -37,18 +37,7 @@ function Login(){
             navigate("/");
         })}
     
-    const logout = async () =>{
-        await fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/logout`,{
-            method: "POST",
-            credentials: "include",
-        })
-        .then((result)=>{
-            if(result.status === 200){
-                console.log(`logout 됐습니다.`);
-                // setIsLogin(false);
-            }
-        });
-    }
+    
 
     return(
         <div>
