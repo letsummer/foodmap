@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Login from "./Login";
 
 function Grid({item}) {
 
@@ -25,29 +26,27 @@ function Grid({item}) {
     )
 }
 
+
 function Admin() {
     const navigate = useNavigate();
-    const [content, setContent] = useState("");
-    const clkSubmit = ()=>{
-        // console.log(`click!`);
-        
-        return navigate("/admin/checklist");
-    }
+    const [isLogin, setIsLogin] = useState(false);
+    const [user, setUser] = useState("");
     
-    const testFunc = (e)=>{
-        setContent(e.target.value);
-        // console.log(e.target.value);
+    const logout = async () =>{
+        await fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/logout`,{
+            method: "POST",
+            credentials: "include",
+        })
+        .then((result)=>{
+            if(result.status === 200){
+                console.log(`logout 됐습니다.`);
+            }
+        });
     }
-    
+
     return(
         <div>
-            {/* <form> */}
-                아이디: <input type="text" />
-                패스워드: <input type="password" />
-                <button onClick={clkSubmit} type="submit">제출</button>
-                <input type="text" value={content} onChange={testFunc}/>
-            {/* </form> */}
-            <Grid item={content}></Grid>
+            <Login/>
         </div>
     )
 }
