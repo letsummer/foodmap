@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { LoginContext } from "../context/Contexts.js";
 import Map from "./Map.js";
 import Add from "./Add.js";
 import List from "./List.js";
