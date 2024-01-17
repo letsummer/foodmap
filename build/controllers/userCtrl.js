@@ -72,7 +72,9 @@ export const postLogin = async (req, res) => {
   req.session.user = user;
   if (user && ok && userId === "admin") {
     req.session.isAdmin = true;
-    return res.status(200).setHeader('Access-Control-Allow-Origin', '*').json({
+    return res.status(200)
+    // .setHeader('Access-Control-Allow-Origin', '*')
+    .json({
       confirm_message: "관리자입니다."
     });
   }

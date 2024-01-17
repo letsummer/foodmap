@@ -23,6 +23,7 @@ function Login(){
         e.preventDefault();
 
         await fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/login`,{
+            mode: "cors",
             method: "POST",
             credentials: "include",
             headers: {
