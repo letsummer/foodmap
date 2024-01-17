@@ -30,14 +30,8 @@ function Login(){
             body: JSON.stringify(useData),
         })        
         .then((res)=> {
-            console.log(`###res.json()###`);
-            console.log(res.json());
-            console.log(`###res.body###`);
-            console.log(res.body);
-            console.log(`###res.headers###`);
-            console.log(res.headers);
-            console.log(`###res.statusText###`);
-            console.log(res.statusText);
+            console.log(`#####res#####`);
+            console.log(res);
         })
         .catch((err)=>console.log(`error: `, err))
         }
