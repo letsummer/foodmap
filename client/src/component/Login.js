@@ -23,30 +23,28 @@ function Login(){
         e.preventDefault();
 
         await fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/login`,{
-            // mode: "cors",
             method: "POST",
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
-                // "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify(useData),
         })        
         // .then((res)=> res.json())
-        .then((data)=>{
-            console.log(`process.env.REACT_APP_SERVER_URL: `, process.env.REACT_APP_SERVER_URL);
-            console.log(data);
-        })
-        .catch((err)=>console.log(`###error###\n`, err));
-        // .catch((err)=>console.log(`error: `, err))
-        }
-        // .then((res)=>(res.json()))
-        // .then((data)=> {
-        //     console.log(data.isAdmin);
-        //     console.log(data.userAuth);
+        // .then((data)=>{
+        //     console.log(`process.env.REACT_APP_SERVER_URL: `, process.env.REACT_APP_SERVER_URL);
+        //     console.log(data);
+        // })
+        // .catch((err)=>console.log(`###error###\n`, err));
+        // // .catch((err)=>console.log(`error: `, err))
+        // }
+        .then((res)=>(res.json()))
+        .then((data)=> {
+            console.log(data.isAdmin);
+            console.log(data.userAuth);
 
-        //     navigate("/");
-        // })}
+            navigate("/");
+        })}
     
     
 
