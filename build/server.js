@@ -12,10 +12,10 @@ import { localsMiddleware } from "./middlewares.js";
 import "dotenv/config";
 const app = express();
 const port = process.env.PORT || 5000;
-// const FileStore = fileStore(session);
 
+// app.use(cors());
 app.use(cors({
-  origin: `${process.env.CLIENT_URL}`,
+  origin: "https://foodmap-hdef.onrender.com",
   //(Whatever your frontend url is) 
   methods: ["GET", "POST"],
   credentials: true
