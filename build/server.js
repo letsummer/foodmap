@@ -49,6 +49,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
+    domain: process.env.SERVER_URL,
     httpOnly: false,
     sameSite: "none",
     secure: true
