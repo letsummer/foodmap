@@ -51,7 +51,7 @@ app.use(
         cookie: {
             httpOnly: false,
             sameSite: "none",
-            // secure: "auto",
+            secure: "auto",
             // maxAge: 20000,
         },
         store: MongoStore.create({mongoUrl:process.env.DB_URI}),

@@ -50,8 +50,8 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     httpOnly: false,
-    sameSite: "none"
-    // secure: "auto",
+    sameSite: "none",
+    secure: "auto"
     // maxAge: 20000,
   },
   store: MongoStore.create({
