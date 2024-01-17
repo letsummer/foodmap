@@ -27,14 +27,14 @@ function Login(){
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin":"*",
+                // "Access-Control-Allow-Origin":"*",
             },
             body: JSON.stringify(useData),
         })        
         // .then((res)=> res.json())
         // .then((data)=>{
         //     console.log(`process.env.REACT_APP_SERVER_URL: `, process.env.REACT_APP_SERVER_URL);
-        //     console.log(data);
+            // console.log(data);
         // })
         // .catch((err)=>console.log(`###error###\n`, err));
         // // .catch((err)=>console.log(`error: `, err))
