@@ -42,10 +42,8 @@ function Login(){
         .then((data)=> {
             console.log(`###data###`);
             console.log(data);
-            console.log(`###data.~~~###`);
-            console.log(data.isAdmin);
-            console.log(data.userAuth);
-
+            console.log(`###req.session###`);
+            console.log(data.session);
             navigate("/");
         })}
     
