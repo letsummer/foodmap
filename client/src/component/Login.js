@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+// import "dotenv/config";
 
 function Login(){
     const navigate = useNavigate();
@@ -29,9 +30,9 @@ function Login(){
             },
             body: JSON.stringify(useData),
         })        
-        .then((res)=> res.json())
+        // .then((res)=> res.json())
         .then((data)=>console.log(data))
-        .catch((err)=>console.log(`error: `, err))
+        // .catch((err)=>console.log(`error: `, err))
         }
         // .then((res)=>(res.json()))
         // .then((data)=> {
