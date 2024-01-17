@@ -32,12 +32,7 @@ function Main(){
             method: "GET",
             credentials: "include",
       })
-      .then((res)=>{
-        
-        console.log(`###Main.res###`);
-        console.log(res);
-        res.json();
-      })
+      .then((res)=> res.json())
       .then((data)=>{
         // console.log(`login여부: `, data.loggedIn);
         // console.log(`유저정보: `, data.user.userId);
