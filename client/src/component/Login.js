@@ -25,17 +25,28 @@ function Login(){
             method: "POST",
             credentials: "include",
             headers: {
-                "content-type": "application/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(useData),
         })        
-        .then((res)=>(res.json()))
-        .then((data)=> {
-            console.log(data.isAdmin);
-            console.log(data.userAuth);
+        .then((res)=> {
+            if(res.status===200){
+                console.log(data.isAdmin);
+                console.log(data.userAuth);
+                navigate("/");
+            }
+            else
+                alert("에러 발생!");
+        })
+        .catch((err)=>console.log(`error: `, err))
+        }
+        // .then((res)=>(res.json()))
+        // .then((data)=> {
+        //     console.log(data.isAdmin);
+        //     console.log(data.userAuth);
 
-            navigate("/");
-        })}
+        //     navigate("/");
+        // })}
     
     
 
