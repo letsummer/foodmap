@@ -29,7 +29,7 @@ function Main(){
 
     useEffect(()=>{
       fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/login/success`,{
-            mode: "cors",
+            // mode: "cors",
             method: "GET",
             credentials: "include",
       })

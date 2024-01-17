@@ -23,12 +23,12 @@ function Login(){
         e.preventDefault();
 
         await fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/login`,{
-            mode: "cors",
+            // mode: "cors",
             method: "POST",
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
+                // "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify(useData),
         })        

@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import Users from "../models/Users.js";
+import "dotenv/config";
 
 export const getSession = (req, res) =>{
     res.status(200).json("session information");
@@ -64,7 +65,8 @@ export const postLogin = async (req, res) => {
         req.session.isAdmin = true;
         return res
             .status(200)
-            .setHeader('Access-Control-Allow-Origin', '*')
+            .setHeader('Access-Control-Allow-Origin', `${process.env.CLIENT_URL}`)
+            .setHeader("Access-Control-Allow-Credentials", true)
             .json({confirm_message:"관리자입니다."});
     }
 
