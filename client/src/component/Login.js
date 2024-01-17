@@ -18,7 +18,8 @@ function Login(){
         userId,
         password
     }
-    const login = async () =>{
+    const login = async (e) =>{
+        e.preventDefault();
 
         await fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/login`,{
             method: "POST",
