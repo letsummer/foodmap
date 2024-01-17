@@ -30,19 +30,14 @@ function Login(){
             body: JSON.stringify(useData),
         })        
         .then((res)=> {
-            if(res.status===200){
-                console.log("###성공!###");
-                console.log(res.json());
-                console.log(res.body);
-                navigate("/");
-            }
-            else{
-                alert("에러 발생!");
-                console.log(`에러`);
-                console.log(res.text());
-                console.log(res.json());
-                console.log(res.body);
-            }
+            console.log(`###res.json()###`);
+            console.log(res.json());
+            console.log(`###res.body###`);
+            console.log(res.body);
+            console.log(`###res.headers###`);
+            console.log(res.headers);
+            console.log(`###res.statusText###`);
+            console.log(res.statusText);
         })
         .catch((err)=>console.log(`error: `, err))
         }
