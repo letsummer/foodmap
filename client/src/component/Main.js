@@ -29,8 +29,9 @@ function Main(){
 
     useEffect(()=>{
       fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/login/success`,{
-          method: "GET",
-          credentials: "include",
+            mode: "no-cors",
+            method: "GET",
+            credentials: "include",
       })
       .then((res)=>res.json())
       .then((data)=>{
