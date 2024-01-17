@@ -51,7 +51,7 @@ app.use(session({
   cookie: {
     httpOnly: false,
     sameSite: "none",
-    secure: "auto"
+    secure: true
     // maxAge: 20000,
   },
   store: MongoStore.create({
