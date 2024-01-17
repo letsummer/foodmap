@@ -32,7 +32,11 @@ function Login(){
             body: JSON.stringify(useData),
         })        
         // .then((res)=> res.json())
-        .then((data)=>console.log(data))
+        .then((data)=>{
+            console.log(`process.env.REACT_APP_SERVER_URL: `, process.env.REACT_APP_SERVER_URL);
+            console.log(data);
+        })
+        .catch((err)=>console.log(`###error###\n`, err));
         // .catch((err)=>console.log(`error: `, err))
         }
         // .then((res)=>(res.json()))
