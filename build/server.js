@@ -49,7 +49,9 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    httpOnly: false
+    httpOnly: false,
+    sameSite: "none"
+    // secure: "auto",
     // maxAge: 20000,
   },
   store: MongoStore.create({
