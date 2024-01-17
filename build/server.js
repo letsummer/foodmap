@@ -12,7 +12,15 @@ import { localsMiddleware } from "./middlewares.js";
 import "dotenv/config";
 const app = express();
 const port = process.env.PORT || 5000;
-app.use(cors());
+app.use((req, res, next) => {
+  const corsWhitelist = [`${process.env.CLIENT_URL}`];
+  if (corsWhitelist.indexOf(req.headers.origin) !== -1) {
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  }
+  next();
+});
+// app.use(cors());
 // app.use(cors({
 //     origin : [`${process.env.CLIENT_URL}`],  //(Whatever your frontend url is) 
 //     methods: ["GET", "POST"],
