@@ -29,10 +29,8 @@ function Login(){
             },
             body: JSON.stringify(useData),
         })        
-        .then((res)=> {
-            console.log(`#####res#####`);
-            console.log(res);
-        })
+        .then((res)=> res.json())
+        .then((data)=>console.log(data))
         .catch((err)=>console.log(`error: `, err))
         }
         // .then((res)=>(res.json()))
