@@ -15,8 +15,7 @@ const port = process.env.PORT || 5000;
 
 // app.use(cors());
 app.use(cors({
-  origin: "https://foodmap-hdef.onrender.com",
-  //(Whatever your frontend url is) 
+  // origin : "https://foodmap-hdef.onrender.com",  //(Whatever your frontend url is) 
   methods: ["GET", "POST"],
   credentials: true
 }));
