@@ -79,8 +79,8 @@ export const postLogin = async (req, res) => {
 export const successLogin = (req, res) =>{
     try {
         const data = req.session;
-        // console.log(`data입니다.~: `, data);
-        // console.log(`###end###`);
+        console.log(`req.session 입니다.~: `, data);
+        console.log(`###end###`);
         return res.json(data);
     } catch (error) {
         res.status(403).json("User Not Found");
