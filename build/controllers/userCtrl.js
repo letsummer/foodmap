@@ -73,9 +73,12 @@ export const postLogin = async (req, res) => {
   req.session.user = user;
   if (user && ok && userId === "admin") {
     req.session.isAdmin = true;
+    console.log(`###admin의 session###\n`, req.session);
     return res.status(200)
     // .cookie("x_auth", req.session.)
-    .setHeader('Access-Control-Allow-Origin', `${process.env.CLIENT_URL}`).setHeader("Access-Control-Allow-Credentials", true).json({
+    // .setHeader('Access-Control-Allow-Origin', `${process.env.CLIENT_URL}`)
+    // .setHeader("Access-Control-Allow-Credentials", true)
+    .json({
       confirm_message: "관리자입니다.",
       session: req.session
     });
