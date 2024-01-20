@@ -35,11 +35,17 @@ function Map(){
     
     // console.log(`useState로 생성한 positions: `, positions);
 
-    navigator.geolocation.watchPosition((position)=>{
-        // console.log(`positions: `, position.coords.latitude, position.coords.longitude);
+    
+    const allowLocation = (position)=>{
         setCurrentLoc([position.coords.latitude, position.coords.longitude]);
-    });
-    // console.log(`currentLoc: `, currentLoc);
+    }
+
+    const errorLocation = () =>{
+        setCurrentLoc([37.49121497148213, 126.87031273426075]);   
+    }
+
+    navigator.geolocation.getCurrentPosition(allowLocation, errorLocation);
+
 
     useEffect(() => {
         // const infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
