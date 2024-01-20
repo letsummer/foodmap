@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App/>
+    <App/>
   // <Router>
   // <Router basename="/foodmap">
       //  <Routes>
