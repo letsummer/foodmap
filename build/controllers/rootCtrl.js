@@ -19,7 +19,8 @@ export const postList = async (req, res) => {
     address,
     phone,
     coord,
-    info
+    info,
+    twit
   } = req.body;
   console.log(req.body);
   try {
@@ -30,19 +31,14 @@ export const postList = async (req, res) => {
       address,
       phone,
       coord,
-      info
+      info,
+      twit
     });
     console.log(`지도에 데이터 추가 완료!`);
   } catch (error) {
     return console.log(error);
   }
   return res.send("postList");
-};
-export const deleteList = async (req, res) => {
-  const preData = await PlaceModel.deleteOne({
-    _id: req.body._id
-  });
-  return res.send("deleteList");
 };
 export const getConfirm = async (req, res) => {
   const list = await PrePlaceModel.find({});
@@ -56,7 +52,8 @@ export const postConfirm = async (req, res) => {
     address,
     phone,
     coord,
-    info
+    info,
+    twit
   } = req.body;
   console.log(req.body);
   try {
@@ -66,7 +63,8 @@ export const postConfirm = async (req, res) => {
       address,
       phone,
       coord,
-      info
+      info,
+      twit
     });
     console.log(`정상 요청!`);
   } catch (error) {

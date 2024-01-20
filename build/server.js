@@ -10,45 +10,8 @@ import userRouter from "./routers/userRouter.js";
 import fileStore from "session-file-store";
 import { localsMiddleware } from "./middlewares.js";
 import "dotenv/config";
-import { TwitterApi } from "twitter-api-v2";
 const app = express();
 const port = process.env.PORT || 5000;
-const client = new TwitterApi({
-  appKey: process.env.TWITTER_API_KEY,
-  appSecret: process.env.TWITTER_API_SECRET,
-  accessToken: process.env.TWITTER_API_ACCESS_TOKEN,
-  accessSecret: process.env.TWITTER_API_ACCESS_SECRET
-});
-async function verifyCredentials() {
-  try {
-    // 사용자의 프로필 정보를 가져옵니다
-    const user = await client.v2.me();
-    console.log('당신 계정 정보', user);
-  } catch (error) {
-    console.error('오류:', error);
-  }
-}
-verifyCredentials();
-
-// 트윗 ID를 사용하여 트윗 검증하는 함수
-async function verifyTweet(tweetId) {
-  try {
-    // 트윗 정보 가져오기
-    const tweet = await client.v2.singleTweet(tweetId);
-
-    // 트윗 정보 출력
-    console.log('트윗 내용:', tweet.data.text);
-    console.log('트윗 아이디:', tweet.data.author_id);
-    // 원하는 다른 정보들을 여기에 추가할 수 있습니다.
-  } catch (error) {
-    console.log(`오류라구요;;\n`);
-    console.error(error);
-  }
-}
-
-// 트윗 ID로 트윗 검증하기
-const tweetIdToVerify = '1748168429289505210'; // 실제 트윗 ID로 변경
-verifyTweet(tweetIdToVerify);
 
 // app.use((req, res, next) => {
 //     res.setHeader(
