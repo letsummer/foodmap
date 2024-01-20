@@ -5,6 +5,7 @@ import styles from "../css/Place.module.css";
 function Url(){
     const { id } = useParams();
     // let tweets = [];
+    const [loading, setLoading] = useState(false);
     const [tweets, setTweets] = useState([]);
 
     const placePage = async () =>{
@@ -13,21 +14,25 @@ function Url(){
         .then((data) => {
             // console.log(`data twit: `, data.twit);
             setTweets(data.twit);
+            setLoading(true);
             // return tweets.splice(0, 0, data.twit);
         })
+        // .then(()=>setLoading(true))
         .catch((error)=>console.log(error));
     }
+
     useEffect(()=>{
         placePage();
+        console.log(`loading: `, loading);
     }, []);
 
-    console.log(`tweets: `, tweets);
+    // console.log(`tweets: `, tweets);
     
-    const urls = ["https://twitter.com/youaremywiz/status/1704132099043934339", 
-    "https://twitter.com/dalgingO227/status/1701981015340953813",
-    "https://twitter.com/dalgingO227/status/1701981015340953813",
-    ];
-    console.log(`url: `, urls);
+    // const urls = ["https://twitter.com/youaremywiz/status/1704132099043934339", 
+    // "https://twitter.com/dalgingO227/status/1701981015340953813",
+    // "https://twitter.com/dalgingO227/status/1701981015340953813",
+    // ];
+    // console.log(`url: `, urls);
 
     // urls.forEach((link)=>{
     //     // console.log(link);
@@ -37,7 +42,7 @@ function Url(){
     
     return(
         <div className={styles.twitGrid}>
-        {
+        { loading?  
             tweets.map((item, index)=>(
                 <div className={styles.innerTweets}>
                     <blockquote id="tweets" class="twitter-tweet">
@@ -45,6 +50,7 @@ function Url(){
                     </blockquote>
                 </div>
             ))
+            : "loading..."
         }
         </div>
         

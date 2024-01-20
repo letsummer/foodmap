@@ -29,23 +29,22 @@ function Map(){
         });
     }
 
-    useEffect(()=>{
-        getData();
-    },[]);
-    
-    // console.log(`useState로 생성한 positions: `, positions);
-
-    
-    const allowLocation = (position)=>{
-        setCurrentLoc([position.coords.latitude, position.coords.longitude]);
+    const allowLocation = ()=>{
+        navigator.geolocation.watchPosition((position)=>{
+            setCurrentLoc([position.coords.latitude, position.coords.longitude]);
+        })
     }
 
     const errorLocation = () =>{
         setCurrentLoc([37.49121497148213, 126.87031273426075]);   
     }
 
-    navigator.geolocation.getCurrentPosition(allowLocation, errorLocation);
-
+    useEffect(()=>{
+        getData();
+        navigator.geolocation.getCurrentPosition(allowLocation, errorLocation);
+    },[]);
+    
+    // console.log(`useState로 생성한 positions: `, positions);
 
     useEffect(() => {
         // const infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
