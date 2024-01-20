@@ -1,6 +1,6 @@
-import axios from "axios";
-import { useState, useEffect, createElement } from "react"
+import { useState } from "react"
 import Form from "./Form.js";
+import Twitter from "./Twitter.js";
 
 function Add(){
     const [search, setSearch] = useState("");
@@ -29,7 +29,6 @@ function Add(){
             </form>
             <span>직접 지정할게요. <input type="checkbox" name="" id="" onClick={isChecked}/></span>
             <Form isCheck={isCheck} searchPlace={place}></Form>
-            <hr /> 
         </div>
     );
 }

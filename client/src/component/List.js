@@ -10,8 +10,8 @@ function DataTable(){
         // console.log(`clicked!: `, item);
         if(window.confirm("지도에서 삭제하시겠습니까?")){
             if(window.confirm("삭제 후 복구가 어렵습니다.")){
-                fetch(`${process.env.REACT_APP_SERVER_URL}/api/list/`,{
-                    method: "delete",
+                fetch(`${process.env.REACT_APP_SERVER_URL}/api/place/${item._id}/delete`,{
+                    method: "post",
                     headers: {
                         "content-type": "application/json",
                     },
@@ -19,7 +19,7 @@ function DataTable(){
                 })
                 .then((res) => res.json());
                 // console.log(`confirm: `, item);
-                return navigate("/admin/list");
+                return navigate(0);
             }
         }
     }
@@ -76,7 +76,7 @@ function DataTable(){
                 {
                     data.map((item, index)=>(
                         <tr key={index}>
-                            <td>{item.name}</td>
+                            <td><a href={`/place/${item._id}`}>{item.name}</a></td>
                             <td>{item.address}</td>
                             <td>{item.phone}</td>
                             <td>-</td>

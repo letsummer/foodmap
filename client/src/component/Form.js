@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import "dotenv/config"
+import Twitter from "./Twitter.js";
 const { kakao } = window;
 
 function Map (){
@@ -22,6 +22,8 @@ function Form({isCheck, searchPlace}){
     const [coord, setCoord] = useState([]);
     const [category, setCategory] = useState("");
     const [info, setInfo] = useState("");
+    const [tweet, setTweet] = useState("");
+    const [list, setList] = useState([]);
 
     // const selectList = ["음식점", "간식", "카페", "술집"];
     // const [, setSelected] = useState("");
@@ -33,8 +35,26 @@ function Form({isCheck, searchPlace}){
         phone,
         coord,
         category,
-        info
+        info,
+        twit:list,
     };
+
+
+
+    const onChangeTweet = (e)=>{
+        setTweet(e.target.value);
+        console.log(e.target.value);
+    }
+    const addBtn = ()=>{
+        console.log(`clicked!`);
+        setList([...list, tweet]);
+    }
+    const deleteBtn = (key) =>{
+        // console.log(`key: `, key);
+        setList(list.filter((item, listIndex) => key !== listIndex));
+        // console.log(`list: `, list);
+    }
+    console.log(`list: `, list);
 
     const onChangeName = (e) => {
         setName(e.target.value);
@@ -195,6 +215,16 @@ function Form({isCheck, searchPlace}){
                     value={phone} disabled={!isCheck}/>
                 <button type="submit">제출</button>
             </form>
+            <hr/>
+            {/* <Twitter></Twitter> */}
+            <input type="text" onChange={onChangeTweet} value={tweet}/>
+            <button onClick={addBtn}>추가</button>
+                {list.map((item, index)=>
+                    <div key={index}>
+                        <span>{item}</span>
+                        <button onClick={()=>deleteBtn(index)}>삭제</button>
+                    </div>
+                )}
         </div>
     );
 }

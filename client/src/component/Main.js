@@ -54,12 +54,12 @@ function Main(){
             <nav>
                 <ul>
                     <Router>
-                        <li><Link to="/">홈</Link></li>
+                        <li><a href="/">홈</a></li>
                         {isLogin? 
                             <>
-                                <li><Link to={`/admin/add`}>요청</Link></li>
-                                <li><Link to={`/admin/list`}>목록</Link></li>
-                                <li><Link to={`/admin/checklist`}>요청목록(미등록상태)</Link></li>
+                                <li><a href={`/admin/add`}>요청</a></li>
+                                <li><a href={`/admin/list`}>목록</a></li>
+                                <li><a href={`/admin/checklist`}>요청목록(미등록상태)</a></li>
                             </>
                         :""}
                     </Router>

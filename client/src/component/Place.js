@@ -3,21 +3,42 @@ import { useParams } from "react-router-dom";
 import styles from "../css/Place.module.css";
 
 function Url(){
+    const { id } = useParams();
+    // let tweets = [];
+    const [tweets, setTweets] = useState([]);
+
+    const placePage = async () =>{
+        await fetch(`${process.env.REACT_APP_SERVER_URL}/api/place/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+            // console.log(`data twit: `, data.twit);
+            setTweets(data.twit);
+            // return tweets.splice(0, 0, data.twit);
+        })
+        .catch((error)=>console.log(error));
+    }
+    useEffect(()=>{
+        placePage();
+    }, []);
+
+    console.log(`tweets: `, tweets);
+    
     const urls = ["https://twitter.com/youaremywiz/status/1704132099043934339", 
     "https://twitter.com/dalgingO227/status/1701981015340953813",
     "https://twitter.com/dalgingO227/status/1701981015340953813",
     ];
+    console.log(`url: `, urls);
 
-    urls.forEach((link)=>{
-        // console.log(link);
-    });
+    // urls.forEach((link)=>{
+    //     // console.log(link);
+    // });
 
 
     
     return(
         <div className={styles.twitGrid}>
         {
-            urls.map((item, index)=>(
+            tweets.map((item, index)=>(
                 <div className={styles.innerTweets}>
                     <blockquote id="tweets" class="twitter-tweet">
                         <a href={item}></a>

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import pinIcon from "../css/pin.png";
 import styles from "../css/Map.module.css";
 const { kakao } = window;
 
 function Map(){
 
     const [positions, setPosition] = useState([]);
+    const [currentLoc, setCurrentLoc] = useState([]);
     let isFloat = false;
 
     const getData = async () => {
@@ -33,18 +35,33 @@ function Map(){
     
     // console.log(`useState로 생성한 positions: `, positions);
 
+    navigator.geolocation.watchPosition((position)=>{
+        // console.log(`positions: `, position.coords.latitude, position.coords.longitude);
+        setCurrentLoc([position.coords.latitude, position.coords.longitude]);
+    });
+    // console.log(`currentLoc: `, currentLoc);
+
     useEffect(() => {
         // const infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
         let infowindow = [];
         const container = document.getElementById("map");
+
+        // const lat = 37.49121497148213;
+        // const lon = 126.87031273426075;
+
+        const lat = currentLoc[0];
+        const lon = currentLoc[1];
+
         const options = {
-            center: new kakao.maps.LatLng(37.54719609591895, 127.075806469889),
+            center: new kakao.maps.LatLng(lat, lon),
             level: 5,
         }
+
+        // console.log(`lat: ${lat}, lon: ${lon}`);
         const map = new kakao.maps.Map(container, options);
 
         // 마커 이미지의 이미지 주소입니다
-        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+        var imageSrc = pinIcon; 
         
         // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
         function clickMarker(map, marker, infowindow) {
@@ -62,7 +79,7 @@ function Map(){
 
         for (var i = 0; i < positions.length; i ++) {
             // 마커 이미지의 이미지 크기 입니다
-            var imageSize = new kakao.maps.Size(24, 35); 
+            var imageSize = new kakao.maps.Size(30, 30); 
             
             // 마커 이미지를 생성합니다    
             var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
@@ -78,13 +95,17 @@ function Map(){
             const isValidInfo = (positions[i].info=="")? "" : `<p><a href=${positions[i].info} target="_blank">카카오맵에서 보기</a></p>`;
             // console.log(positions[i], isValidInfo);
             let content =
-                `<div style="width:300px; height:200px;">
+                `<div style="padding:5px; width:300px; height:150px;">
                     <strong><a href="/place/${positions[i].id}" target="_blank">${positions[i].name}</a></strong>
                     <p>${positions[i].address}</p>
                     <p>${positions[i].phone}</p>
                 ` + isValidInfo +
                 `</div>`;
-            let iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+            
+            
+            
+            
+                let iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
 
             // 인포윈도우를 생성합니다
             infowindow = new kakao.maps.InfoWindow({

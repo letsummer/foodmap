@@ -41,6 +41,16 @@ export const postEdit = async (req, res) =>{
     return res.send("postEdit");
 }
 
+export const getDelete = (req, res) =>{
+    return res.send("getDelete");
+}
+
+export const postDelete = async (req, res) =>{
+    console.log(`req.body: `, req.body);
+    await PlaceModel.deleteOne({_id: req.body._id});
+    return res.send("postDelete");
+}
+
 export const getForm = (req, res)=>{
     return res.send("getForm");
 }
