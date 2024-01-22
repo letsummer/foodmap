@@ -1,5 +1,8 @@
 @import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css");
 
+p{
+    font-size: small;
+}
 .tableCase{
     display: flex;
     justify-content: center;

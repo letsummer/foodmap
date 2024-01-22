@@ -35,7 +35,7 @@ function Tweets({id, isEdit}){
     //     // setList([...list, key]);
     //     setList(list.filter((item, listIndex) => key !== listIndex));
     // }
-    console.log(`list: `, list);
+    // console.log(`list: `, list);
 
     useEffect(()=>{
         placePage();

@@ -54,7 +54,7 @@ function Search({isCheck, searchPlace}){
         setList(list.filter((item, listIndex) => key !== listIndex));
         // console.log(`list: `, list);
     }
-    console.log(`list: `, list);
+    // console.log(`list: `, list);
 
     const onChangeName = (e) => {
         setName(e.target.value);

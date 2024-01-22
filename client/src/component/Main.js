@@ -41,8 +41,8 @@ function Main(){
       .then((data)=>{
         // console.log(`login여부: `, data.loggedIn);
         // console.log(`유저정보: `, data.user.userId);
-        console.log(`###Main.data###`);
-        console.log(data);
+        // console.log(`###Main.data###`);
+        // console.log(data);
         if(data.loggedIn){
             setIsLogin(data.loggedIn);
             setUser(data.user.userId);

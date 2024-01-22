@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Tweets from "./Tweets.js";
 import Twitter from "./Twitter.js";
+import styles from "../css/Place.module.css";
+import editStyle from "../css/Edit.module.css";
 
 function Edit() {
     const navigate = useNavigate();
@@ -66,8 +68,11 @@ function Edit() {
         getEditpage();
     }, []);
     return(
-        <div>
+        <div className={styles.tableCase}>
             <table>
+                <tr className={editStyle.submitBtn}>
+                    <button onClick={()=>submitBtn(edit)}>완료</button>
+                </tr>
                 <tr>
                     <th>가게명</th>
                     <td><input value={name} placeholder={edit.name} onChange={onChangeName}/></td>
@@ -82,13 +87,13 @@ function Edit() {
                 </tr>
                 <tr>
                     <th>링크</th>
-                    <td><a href={edit.info}>{edit.info}</a></td>
+                    <td className={styles.mapLink}><a href={edit.info}>{edit.info}</a></td>
                 </tr>
                 <tr>
                     <th>추천트윗</th>
                     <tr>
                         <Twitter></Twitter>
-                        <p>삭제할 트윗 선택</p>
+                        <p>&gt; 삭제할 트윗 선택</p>
                         <Tweets id={id} isEdit={true}></Tweets>
                     </tr>
                     {/* <td><Tweets id={id}></Tweets></td> */}
@@ -97,9 +102,7 @@ function Edit() {
                     <th>생성일</th>
                     <td></td>
                 </tr>
-                <tr>
-                    <button onClick={()=>submitBtn(edit)}>제출</button>
-                </tr>
+                
             </table>
             {/* <Form></Form> */}
         </div>
