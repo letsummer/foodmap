@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Twitter from "./Twitter.js";
-import styles from "../css/Map.module.css";
+import styles from "../css/Add.module.css";
 const { kakao } = window;
 
 function Map (){
     return(
-        <div className={styles.map} id="map">
+        <div id="map" style={{"width": "100vw", "height": "80vh"}}>
         </div>
     );
 }
-function Form({isCheck, searchPlace}){
+function Search({isCheck, searchPlace}){
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [address, setAddr] = useState("");
@@ -103,7 +103,7 @@ function Form({isCheck, searchPlace}){
         }
         new kakao.maps.Map(container, options)
 
-    });
+    }, [currentLoc]);
 
     const searchingPlacename = ()=>{
         const infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
@@ -117,8 +117,8 @@ function Form({isCheck, searchPlace}){
             level: 3,
         }
         const map = new kakao.maps.Map(container, options)
-        const ps = new kakao.maps.services.Places()
-        ps.keywordSearch(searchPlace, placesSearchCB)
+        const ps = new kakao.maps.services.Places();
+        ps.keywordSearch(searchPlace, placesSearchCB);
     
         function placesSearchCB(data, status, pagination) {
             if (status === kakao.maps.services.Status.OK) {
@@ -238,6 +238,20 @@ function Form({isCheck, searchPlace}){
 
     return(
         <div>
+            {/* <hr/> */}
+            {/* <Twitter></Twitter> */}
+                <div className={styles.addTweets}>
+                    <div>트윗 링크 추가</div>
+                    <input type="text" onChange={onChangeTweet} value={tweet} 
+                        placeholder="예) https://twitter.com/username/status/1234567890"/>
+                    <button className={styles.addBtn} onClick={addBtn}>추가</button>
+                </div>
+                {list.map((item, index)=>
+                    <div className={styles.tweetsList} key={index}>
+                        <span>{item}</span>
+                        <button onClick={()=>deleteBtn(index)}>삭제</button>
+                    </div>
+                )}
             <form id="addform" method="post" onSubmit={submitBtn}>
                 <input id="name" type="text" placeholder="가게명" onChange={onChangeName}
                     value={name} disabled={!isCheck}/>
@@ -245,22 +259,11 @@ function Form({isCheck, searchPlace}){
                     value={address} disabled/>
                 <input id="phone" type="text" placeholder="연락처" onChange={onChangePhone}
                     value={phone} disabled={!isCheck}/>
-                <button type="submit">제출</button>
+                <button className={styles.submitBtn} type="submit">요청</button>
             </form>
-            {/* <hr/> */}
-            {/* <Twitter></Twitter> */}
-                트윗 링크 추가 <input type="text" onChange={onChangeTweet} value={tweet} 
-                placeholder="예) https://twitter.com/username/status/1234567890"/>
-            <button onClick={addBtn}>추가</button>
-                {list.map((item, index)=>
-                    <div key={index}>
-                        <span>{item}</span>
-                        <button onClick={()=>deleteBtn(index)}>삭제</button>
-                    </div>
-                )}
             <Map></Map>
         </div>
     );
 }
 
-export default Form;
+export default Search;

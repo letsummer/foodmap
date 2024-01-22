@@ -37,6 +37,21 @@ function Checklist(){
             return navigate("/admin/list");
         }
     }
+    const rejectPlace = (item) =>{
+        // console.log(`item: `, item._id);
+        if(window.confirm("반려하시겠습니까?")){
+        //     // console.log(`data: `, item.name);
+            fetch(`${process.env.REACT_APP_SERVER_URL}/api/reject/`,{
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(item),
+            })
+            .then((res) => res.json());
+            return navigate(0);
+        }
+    }
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_SERVER_URL}/api/confirm`)
@@ -58,11 +73,12 @@ function Checklist(){
                         <th>주소</th>
                         <th>연락처</th>
                         <th>링크</th>
-                        <th>버튼</th>
+                        <th>수락</th>
+                        <th>거절</th>
                     </tr>
                 </thead>
                 <tbody>
-                    { data? <p>요청 내용이 없습니다.</p> :
+                    { 
                         data.map((item, index)=>(
                             <tr key={index}>
                                 <td>{item.name}</td>
@@ -70,9 +86,10 @@ function Checklist(){
                                 <td>{item.address}</td>
                                 <td>{item.phone}</td>
                                 {/* <td>-</td> */}
-                                <td><a href={item.info}>카맵에서</a></td>
+                                <td><a href={item.info}>리뷰</a></td>
                                 {/* <Btn content={item}></Btn> */}
                                 <td><button id={item._id} onClick={()=>addPlace(item)} >추가</button></td>
+                                <td><button className={styles.deleteBtn} id={item._id} onClick={()=>rejectPlace(item)} >반려</button></td>
                             </tr>
                         ))
                     }

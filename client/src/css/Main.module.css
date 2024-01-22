@@ -28,8 +28,13 @@ button{
 }
 .logoutBtn{
     color: whitesmoke;
-    background-color: crimson;
+    background-color: grey;
+    min-width: 80px;
     height: 2em;
     border: none;
     border-radius: 10px;
+}
+.logoutBtn:hover{
+    background-color: crimson;
+    cursor: pointer;
 }

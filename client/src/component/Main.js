@@ -14,7 +14,6 @@ import styles from "../css/Main.module.css";
 import logo from "../css/logo.png";
 
 function Main(){
-    // const navigate = useNavigate();
     const [user, setUser] = useState("");
     const [isLogin, setIsLogin] = useState(false);
   
@@ -25,8 +24,9 @@ function Main(){
         })
         .then((result)=>{
             if(result.status === 200){
-                // navigate(0);
                 console.log(`logout 됐습니다.`);
+                window.location.reload();
+                // navigate(0);
                 // setIsLogin(false);
             }
         });
@@ -67,8 +67,8 @@ function Main(){
                                 <li><a href={`/admin/checklist`}>요청목록(미등록상태)</a></li>
                             </>
                         :""}
+                        {isLogin? <button className={styles.logoutBtn} onClick={logout}>로그아웃</button> : ""}
                     </Router>
-                    {isLogin? <button className={styles.logoutBtn} onClick={logout}>로그아웃</button> : ""}
                 </ul>
             </nav>
             <Router>

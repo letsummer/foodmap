@@ -47,7 +47,7 @@ function Login(){
             console.log(data.session);
             // navigate(0);
             navigate("/");
-            
+            window.location.reload();
         })}
     
     

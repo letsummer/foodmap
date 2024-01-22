@@ -1,0 +1,70 @@
+@import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css");
+*{
+    font-family: 'NanumSquareNeo';
+}
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+input {
+    height: 30px;
+    border: none;
+    /* border: 1px solid black; */
+    /* border-radius: 5px; */
+}
+button{
+    height: 2em;
+}
+.addTweets{
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+.addTweets > div{
+    margin-right: 10px;
+}
+.addTweets > input{
+    width: 50%;
+}
+.tweetsList {
+    display: flex;
+    margin: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+}
+.tweetsList > button {
+    margin-left: 5px;
+    height: 1.5em;
+}
+.tweetsList > button:hover {
+    background-color: crimson;
+    color: white;
+}
+.checkbox {
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+}
+.searchBtn{
+    background-color:grey;
+    color: white;
+}
+.searchBtn:hover{
+    background-color:black;
+}
+.addBtn:hover{
+    background-color: dodgerblue;
+    color: white;
+}
+.submitBtn{
+    background-color: seagreen;
+    color: white;
+}
+.submitBtn:hover{
+    background-color: rgba(30, 117, 68)
+}

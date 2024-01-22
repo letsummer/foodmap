@@ -58,3 +58,9 @@ export const postConfirm = async (req, res) => {
     }
     return res.send("postConfirm");
 }
+
+export const reject = async (req, res)=>{
+    await PrePlaceModel.deleteOne({_id: req.body._id});
+    // const {id} = req;
+    // console.log(`##id: `, id);
+}

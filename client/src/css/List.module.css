@@ -15,7 +15,9 @@ th, td {
     border-bottom: 1px solid #ddd;
     text-align: center;
 } 
-
+td:first-child{
+    width: 100px;
+}
 th {
     font-family: 'NanumSquareNeoBold';
     font-size: 1em;
@@ -27,12 +29,13 @@ th {
 tbody tr:hover {
     background-color: #d3d3d3;
     opacity: 0.9;
-    cursor: pointer;
 }
 
 button {
     border: none;
     opacity: 90%;
+    width: 40px;
+    cursor: pointer;
 }
 
 .editBtn {
