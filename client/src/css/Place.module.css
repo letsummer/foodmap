@@ -1,15 +1,18 @@
 @import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css");
+
 .tableCase{
     display: flex;
     justify-content: center;
 }
-
+.mapLink > a{
+    font-size: small;
+}
 .twitGrid{
     display: flex;
     flex-direction: row;
-    max-width: 520px;
-    /* border: 2px solid red; */
-    /* max-width: 100%; */
+    /* min-width: 260px; */
+    max-width: 260px;
+    /* max-width: 500px; */
     overflow-x: scroll;
     white-space: nowrap;
 }

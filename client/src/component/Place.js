@@ -38,7 +38,7 @@ function Place(){
                 </tr>
                 <tr>
                     <th>링크</th>
-                    <td><a href={detail.info}>{detail.info}</a></td>
+                    <td className={styles.mapLink}><a href={detail.info}>{detail.info}</a></td>
                 </tr>
                 <tr>
                     <th>추천트윗</th>
