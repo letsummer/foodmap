@@ -11,6 +11,7 @@ import Admin from "./Admin.js";
 import Join from "./Join.js";
 // import Login from "./Login.js";
 import styles from "../css/Main.module.css";
+import logo from "../css/logo.png";
 
 function Main(){
     // const navigate = useNavigate();
@@ -58,7 +59,7 @@ function Main(){
             <nav>
                 <ul>
                     <Router>
-                        <li><a href="/">홈</a></li>
+                        <li><a href="/"><img src={logo} style={{"width":"50%"}}/></a></li>
                         {isLogin? 
                             <>
                                 <li><a href={`/admin/add`}>요청</a></li>
@@ -67,8 +68,8 @@ function Main(){
                             </>
                         :""}
                     </Router>
+                    {isLogin? <button className={styles.logoutBtn} onClick={logout}>로그아웃</button> : ""}
                 </ul>
-                {isLogin? <button onClick={logout}>로그아웃</button> : ""}
             </nav>
             <Router>
                 <Routes>

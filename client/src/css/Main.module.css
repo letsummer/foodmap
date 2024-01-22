@@ -1,0 +1,35 @@
+@import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css");
+
+nav{
+    font-family: 'NanumSquareNeoExtraBold';
+    margin-bottom: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50px;
+    background-color: #A459D1;
+}
+ul{
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ul>li>a{
+    text-decoration: none;
+    /* color:blanchedalmond; */
+    color: #FFD93D;
+}
+button{
+    font-family: 'NanumSquareNeo';
+    opacity: 90%;
+    
+}
+.logoutBtn{
+    color: whitesmoke;
+    background-color: crimson;
+    height: 2em;
+    border: none;
+    border-radius: 10px;
+}

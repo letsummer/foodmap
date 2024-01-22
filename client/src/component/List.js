@@ -54,7 +54,7 @@ function DataTable(){
                     <th>가게명</th>
                     <th>주소</th>
                     <th>연락처</th>
-                    <th>트윗개수</th>
+                    <th>추천트윗</th>
                     <th>링크</th>
                     <th>수정</th>
                     <th>제거</th>
@@ -67,8 +67,8 @@ function DataTable(){
                             <td><a href={`/place/${item._id}`}>{item.name}</a></td>
                             <td>{item.address}</td>
                             <td>{item.phone}</td>
-                            <td>{item.twit.length}</td>
-                            <td><a href={item.info}>카맵에서</a></td>
+                            <td>{item.twit.length}개</td>
+                            <td><a href={item.info}>리뷰</a></td>
                             <td><button className={styles.editBtn} id={item._id} onClick={()=>updatePlace(item)} >수정</button></td>
                             <td><button className={styles.deleteBtn} id={item._id} onClick={()=>deletePlace(item)} >삭제</button></td>
                         </tr>
