@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "../css/List.module.css";
 // import "dotenv/config";
 // require("dotenv").config();
 
@@ -49,19 +50,19 @@ function Checklist(){
     return(
         <div>
             {/* <form action=""> */}
-            <table>
+            <table className={styles.table}>
                 <thead>
                     <tr>
                         <th>가게명</th>
                         <th>카테고리</th>
                         <th>주소</th>
                         <th>연락처</th>
-                        <th>카카오맵 정보</th>
+                        <th>링크</th>
                         <th>버튼</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {
+                    { data? <p>요청 내용이 없습니다.</p> :
                         data.map((item, index)=>(
                             <tr key={index}>
                                 <td>{item.name}</td>

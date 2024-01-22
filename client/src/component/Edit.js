@@ -1,54 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Form from "./Form.js";
-function Url(){
-    const { id } = useParams();
-    // let tweets = [];
-    const [tweets, setTweets] = useState([]);
+import Tweets from "./Tweets.js";
+import Twitter from "./Twitter.js";
 
-    const placePage = async () =>{
-        await fetch(`${process.env.REACT_APP_SERVER_URL}/api/place/${id}`)
-        .then((response) => response.json())
-        .then((data) => {
-            // console.log(`data twit: `, data.twit);
-            setTweets(data.twit);
-            // return tweets.splice(0, 0, data.twit);
-        })
-        .catch((error)=>console.log(error));
-    }
-    useEffect(()=>{
-        placePage();
-    }, []);
-
-    console.log(`tweets: `, tweets);
-    
-    const urls = ["https://twitter.com/youaremywiz/status/1704132099043934339", 
-    "https://twitter.com/dalgingO227/status/1701981015340953813",
-    "https://twitter.com/dalgingO227/status/1701981015340953813",
-    ];
-    console.log(`url: `, urls);
-
-    // urls.forEach((link)=>{
-    //     // console.log(link);
-    // });
-
-
-    
-    return(
-        <div>
-        {
-            tweets.map((item, index)=>(
-                <div>
-                    <blockquote id="tweets" class="twitter-tweet">
-                        <a href={item}></a>
-                    </blockquote>
-                </div>
-            ))
-        }
-        </div>
-        
-    );
-}
 function Edit() {
     const navigate = useNavigate();
     const { id } = useParams();
@@ -58,8 +12,11 @@ function Edit() {
     const [addr, setAddr] = useState(edit.address);
     const [phone, setPhone] = useState(edit.phone);
     const [coord, setCoord] = useState(edit.coord);
+    const [tweets, setTweets] = useState(edit.twit);
     // console.log(edit.coord);
     // console.log(edit.name);
+
+    
 
     const onChangeName = (e) => {
         setName(e.target.value);
@@ -78,7 +35,10 @@ function Edit() {
     const getEditpage = () =>{
         fetch(`${process.env.REACT_APP_SERVER_URL}/api/place/${id}`)
         .then((response) => response.json())
-        .then((json) => setEdit(json))
+        .then((json) => {
+            setEdit(json);
+            // console.log(`json: `,json.twit);
+        })
         .catch((error)=>console.log(error));
     }
 
@@ -101,11 +61,12 @@ function Edit() {
     }
     
 
+    console.log(`tweets: `, edit.twit);
     useEffect(() => {
         getEditpage();
     }, []);
     return(
-        <div>Place!
+        <div>
             <table>
                 <tr>
                     <th>가게명</th>
@@ -120,12 +81,17 @@ function Edit() {
                     <td><input value={phone} placeholder={edit.phone} onChange={onChangePhone}/></td>
                 </tr>
                 <tr>
-                    <th>카카오맵 정보</th>
+                    <th>링크</th>
                     <td><a href={edit.info}>{edit.info}</a></td>
                 </tr>
                 <tr>
                     <th>추천트윗</th>
-                    <Url></Url>
+                    <tr>
+                        <Twitter></Twitter>
+                        <p>삭제할 트윗 선택</p>
+                        <Tweets id={id} isEdit={true}></Tweets>
+                    </tr>
+                    {/* <td><Tweets id={id}></Tweets></td> */}
                 </tr>
                 <tr>
                     <th>생성일</th>

@@ -1,16 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Twitter from "./Twitter.js";
+import styles from "../css/Map.module.css";
 const { kakao } = window;
 
 function Map (){
     return(
-        <div
-            id="map"
-            style={{
-                width: '500px',
-                height: '200px',
-            }}>
+        <div className={styles.map} id="map">
         </div>
     );
 }
@@ -24,7 +20,8 @@ function Form({isCheck, searchPlace}){
     const [info, setInfo] = useState("");
     const [tweet, setTweet] = useState("");
     const [list, setList] = useState([]);
-
+    const [currentLoc, setCurrentLoc] = useState([]);
+    
     // const selectList = ["음식점", "간식", "카페", "술집"];
     // const [, setSelected] = useState("");
 
@@ -46,8 +43,11 @@ function Form({isCheck, searchPlace}){
         console.log(e.target.value);
     }
     const addBtn = ()=>{
-        console.log(`clicked!`);
+        if(tweet==="")
+            return alert("링크를 입력해주세요.");
+        // console.log(`clicked!`);
         setList([...list, tweet]);
+        setTweet("");
     }
     const deleteBtn = (key) =>{
         // console.log(`key: `, key);
@@ -80,11 +80,40 @@ function Form({isCheck, searchPlace}){
         return navigate("/");
     }
 
+    const allowLocation = ()=>{
+        navigator.geolocation.watchPosition((position)=>{
+            setCurrentLoc([position.coords.latitude, position.coords.longitude]);
+        })
+    }
+
+    const errorLocation = () =>{
+        setCurrentLoc([37.49121497148213, 126.87031273426075]);   
+    }
+
+    useEffect(()=>{
+        navigator.geolocation.getCurrentPosition(allowLocation, errorLocation);
+        const container = document.getElementById('map');
+        
+        const lat = currentLoc[0];
+        const lon = currentLoc[1];
+
+        const options = {
+            center: new kakao.maps.LatLng(lat, lon),
+            level: 3,
+        }
+        new kakao.maps.Map(container, options)
+
+    });
+
     const searchingPlacename = ()=>{
         const infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
-        const container = document.getElementById('map')
+        const container = document.getElementById('map');
+        
+        const lat = currentLoc[0];
+        const lon = currentLoc[1];
+
         const options = {
-            center: new kakao.maps.LatLng(37.53978115795, 127.069482948761),
+            center: new kakao.maps.LatLng(lat, lon),
             level: 3,
         }
         const map = new kakao.maps.Map(container, options)
@@ -136,9 +165,13 @@ function Form({isCheck, searchPlace}){
         }
     }
     const searchingAddress = () =>{
-        const container = document.getElementById('map')
+        const container = document.getElementById('map');
+
+        const lat = currentLoc[0];
+        const lon = currentLoc[1];
+
         const options = {
-                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표
                 level: 3 // 지도의 확대 레벨
         };  
 
@@ -154,7 +187,7 @@ function Form({isCheck, searchPlace}){
             position: map.getCenter() 
         }); 
         // 지도에 마커를 표시합니다
-        marker.setMap(map);
+        // marker.setMap(map);
 
         // 지도에 클릭 이벤트를 등록합니다
         // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
@@ -192,6 +225,7 @@ function Form({isCheck, searchPlace}){
         setName("");
         setAddr("");
         setPhone("");
+        setTweet("");
         // console.log(`searchingType이 작동했음!`);
     }
     useEffect(() => {
@@ -204,8 +238,6 @@ function Form({isCheck, searchPlace}){
 
     return(
         <div>
-            <hr />
-            <Map></Map>
             <form id="addform" method="post" onSubmit={submitBtn}>
                 <input id="name" type="text" placeholder="가게명" onChange={onChangeName}
                     value={name} disabled={!isCheck}/>
@@ -215,9 +247,10 @@ function Form({isCheck, searchPlace}){
                     value={phone} disabled={!isCheck}/>
                 <button type="submit">제출</button>
             </form>
-            <hr/>
+            {/* <hr/> */}
             {/* <Twitter></Twitter> */}
-            <input type="text" onChange={onChangeTweet} value={tweet}/>
+                트윗 링크 추가 <input type="text" onChange={onChangeTweet} value={tweet} 
+                placeholder="예) https://twitter.com/username/status/1234567890"/>
             <button onClick={addBtn}>추가</button>
                 {list.map((item, index)=>
                     <div key={index}>
@@ -225,6 +258,7 @@ function Form({isCheck, searchPlace}){
                         <button onClick={()=>deleteBtn(index)}>삭제</button>
                     </div>
                 )}
+            <Map></Map>
         </div>
     );
 }

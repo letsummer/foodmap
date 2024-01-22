@@ -26,8 +26,8 @@ function Add(){
             <form id="keywordSearch" onSubmit={handleSubmit}>
                 키워드: <input type="text" onChange={onChange} value={search} id="keyword" size="15"/>
                 <button type="submit">검색</button>
+                <span> <input type="checkbox" name="" id="" onClick={isChecked}/>직접 지정할게요.</span>
             </form>
-            <span>직접 지정할게요. <input type="checkbox" name="" id="" onClick={isChecked}/></span>
             <Form isCheck={isCheck} searchPlace={place}></Form>
         </div>
     );

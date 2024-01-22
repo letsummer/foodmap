@@ -45,7 +45,9 @@ function Login(){
             console.log(data);
             console.log(`###req.session###`);
             console.log(data.session);
+            // navigate(0);
             navigate("/");
+            
         })}
     
     

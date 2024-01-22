@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "../css/List.module.css";
 
 function DataTable(){
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const deletePlace = (item)=>{
         // console.log(`clicked!: `, item);
@@ -47,42 +48,29 @@ function DataTable(){
       }, []);
 
     return(
-        // <div>
-        //     {/* <h1>The Data! {loading ? "":  `(${data.length})`}</h1> */}
-        //     {loading? 
-        //         (<strong>Loading . . .</strong>):
-        //         (<ul>
-        //             {data.map((d)=>(
-        //                 <li>
-        //                     {d.name}
-        //                 </li>
-        //             ))}
-        //         </ul>)
-        //     }
-        // </div>
-        <table>
+        <table className={styles.table}>
             <thead>
                 <tr>
                     <th>가게명</th>
                     <th>주소</th>
                     <th>연락처</th>
                     <th>트윗개수</th>
-                    <th>카카오맵 정보</th>
+                    <th>링크</th>
                     <th>수정</th>
                     <th>제거</th>
                 </tr>
             </thead>
             <tbody>
-                {
+                { loading? "loading..." :
                     data.map((item, index)=>(
                         <tr key={index}>
                             <td><a href={`/place/${item._id}`}>{item.name}</a></td>
                             <td>{item.address}</td>
                             <td>{item.phone}</td>
-                            <td>-</td>
+                            <td>{item.twit.length}</td>
                             <td><a href={item.info}>카맵에서</a></td>
-                            <td><button id={item._id} onClick={()=>updatePlace(item)} >수정</button></td>
-                            <td><button id={item._id} onClick={()=>deletePlace(item)} >삭제</button></td>
+                            <td><button className={styles.editBtn} id={item._id} onClick={()=>updatePlace(item)} >수정</button></td>
+                            <td><button className={styles.deleteBtn} id={item._id} onClick={()=>deletePlace(item)} >삭제</button></td>
                         </tr>
                     ))
                 }
@@ -93,7 +81,7 @@ function DataTable(){
 
 function List(){
     return(
-        <div>isLoading 해줘야 함
+        <div>
             <DataTable></DataTable>
         </div>
     );

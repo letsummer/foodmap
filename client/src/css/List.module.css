@@ -1,0 +1,46 @@
+@import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css");
+.table{
+    font-family: 'NanumSquareNeo';
+    font-size: 0.8em;
+    border-collapse: collapse;
+    width: 80vw;
+    margin: 0rem auto;
+    box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+} 
+
+th {
+    font-family: 'NanumSquareNeoBold';
+    font-size: 1em;
+    background-color: #1b1b1b;
+    color: #ddd;
+}
+  
+/* 테이블 올렸을 때 */
+tbody tr:hover {
+    background-color: #d3d3d3;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+button {
+    border: none;
+    opacity: 90%;
+}
+
+.editBtn {
+    color: #1b1b1b;
+    background-color: #d3d3d3;
+}
+
+.deleteBtn {
+    color: whitesmoke;
+    background-color: crimson;
+}

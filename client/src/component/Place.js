@@ -1,64 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Tweets from "./Tweets";
 import styles from "../css/Place.module.css";
-
-function Url(){
-    const { id } = useParams();
-    // let tweets = [];
-    const [loading, setLoading] = useState(false);
-    const [tweets, setTweets] = useState([]);
-
-    const placePage = async () =>{
-        await fetch(`${process.env.REACT_APP_SERVER_URL}/api/place/${id}`)
-        .then((response) => response.json())
-        .then((data) => {
-            // console.log(`data twit: `, data.twit);
-            setTweets(data.twit);
-            setLoading(true);
-            // return tweets.splice(0, 0, data.twit);
-        })
-        // .then(()=>setLoading(true))
-        .catch((error)=>console.log(error));
-    }
-
-    useEffect(()=>{
-        placePage();
-        console.log(`loading: `, loading);
-    }, []);
-
-    // console.log(`tweets: `, tweets);
-    
-    // const urls = ["https://twitter.com/youaremywiz/status/1704132099043934339", 
-    // "https://twitter.com/dalgingO227/status/1701981015340953813",
-    // "https://twitter.com/dalgingO227/status/1701981015340953813",
-    // ];
-    // console.log(`url: `, urls);
-
-    // urls.forEach((link)=>{
-    //     // console.log(link);
-    // });
-
-
-    
-    return(
-        <div className={styles.twitGrid}>
-        { loading?  
-            tweets.map((item, index)=>(
-                <div className={styles.innerTweets}>
-                    <blockquote id="tweets" class="twitter-tweet">
-                        <a href={item}></a>
-                    </blockquote>
-                </div>
-            ))
-            : "loading..."
-        }
-        </div>
-        
-    );
-}
 
 function Place(){
     const { id } = useParams();
+    // console.log(`id: `, {id});
+    // Tweets(id);
     const [detail, setDetail] = useState([]);
 
     const placePage = () =>{
@@ -74,7 +22,7 @@ function Place(){
         placePage();
     }, []);
     return(
-        <div>Place!
+        <div>
             <table>
                 <tr>
                     <th>가게명</th>
@@ -89,12 +37,12 @@ function Place(){
                     <td>{detail.phone}</td>
                 </tr>
                 <tr>
-                    <th>카카오맵 정보</th>
+                    <th>링크</th>
                     <td><a href={detail.info}>{detail.info}</a></td>
                 </tr>
                 <tr>
                     <th>추천트윗</th>
-                    <td><Url></Url></td>
+                    <td><Tweets id={id}></Tweets></td>
                 </tr>
                 <tr>
                     <th>생성일</th>

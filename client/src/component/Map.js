@@ -129,10 +129,7 @@ function Map(){
     });
 
     return(
-        <div id="map" style={{
-            width: "500px",
-            height:"500px"
-        }}>
+        <div className={styles.map} id="map">
         </div>
     );
 }

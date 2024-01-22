@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Map from "./Map.js";
 import Add from "./Add.js";
@@ -9,8 +10,10 @@ import Edit from "./Edit.js";
 import Admin from "./Admin.js";
 import Join from "./Join.js";
 // import Login from "./Login.js";
+import styles from "../css/Main.module.css";
 
 function Main(){
+    // const navigate = useNavigate();
     const [user, setUser] = useState("");
     const [isLogin, setIsLogin] = useState(false);
   
@@ -21,6 +24,7 @@ function Main(){
         })
         .then((result)=>{
             if(result.status === 200){
+                // navigate(0);
                 console.log(`logout 됐습니다.`);
                 // setIsLogin(false);
             }
@@ -50,7 +54,7 @@ function Main(){
     console.log(`user: `, user);
 
     return(
-        <div>
+        <div className={styles.main}>
             <nav>
                 <ul>
                     <Router>

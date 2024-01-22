@@ -1,3 +1,4 @@
+@import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css");
 .twitGrid{
     display: flex;
     flex-direction: row;
@@ -15,4 +16,36 @@
 }
 .innerTweet{
     /* height: 50px; */
+}
+.tweetLink {
+    margin: 5px;
+    padding: 2px;
+    max-width: 200px;
+    font-size: small;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+table {
+    font-family: 'NanumSquareNeo';
+    border-collapse: collapse;
+    width: 500px;
+    margin: 0rem auto;
+    box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+  
+/* 테이블 행 */
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #1b1b1b;
+    color: #ddd;
 }
