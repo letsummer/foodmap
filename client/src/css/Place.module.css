@@ -1,12 +1,17 @@
 @import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css");
+.tableCase{
+    display: flex;
+    justify-content: center;
+}
+
 .twitGrid{
     display: flex;
     flex-direction: row;
+    max-width: 520px;
     /* border: 2px solid red; */
-    max-width: 500px;
+    /* max-width: 100%; */
     overflow-x: scroll;
     white-space: nowrap;
-    /* width: 300px; */
 }
 .innerTweets{
     /* border: 1px solid black; */
@@ -31,8 +36,11 @@
 table {
     font-family: 'NanumSquareNeo';
     border-collapse: collapse;
-    width: 500px;
-    margin: 0rem auto;
+    min-width: 200px;
+    /* width: 500px; */
+    /* max-width: 300px; */
+    margin: 1rem;
+    padding: 10px;
     box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1);
     background-color: white;
 }

@@ -22,7 +22,7 @@ function Place(){
         placePage();
     }, []);
     return(
-        <div>
+        <div className={styles.tableCase}>
             <table>
                 <tr>
                     <th>가게명</th>
