@@ -23,9 +23,11 @@ function Tweets({id, isEdit}){
 
     const deleteBtn = (isChecked, id) =>{
         console.log(`id: `, id);
-        if(isChecked)
+        if(isChecked){
             // console.log(`checked? `, isChecked);
             setList((prev)=>[...prev, id]);
+            
+        }
         else
             setList(list.filter((index) => index !== id));
     }
@@ -35,7 +37,7 @@ function Tweets({id, isEdit}){
     //     // setList([...list, key]);
     //     setList(list.filter((item, listIndex) => key !== listIndex));
     // }
-    // console.log(`list: `, list);
+    console.log(`list: `, list);
 
     useEffect(()=>{
         placePage();

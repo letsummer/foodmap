@@ -75,15 +75,15 @@ function Edit() {
                 </tr>
                 <tr>
                     <th>가게명</th>
-                    <td><input value={name} placeholder={edit.name} onChange={onChangeName}/></td>
+                    <td className={editStyle.input}><input value={name} placeholder={edit.name} onChange={onChangeName}/></td>
                 </tr>
                 <tr>
                     <th>주소</th>
-                    <td><input value={addr} placeholder={edit.address} disabled/></td>
+                    <td>{edit.address}</td>
                 </tr>
                 <tr>
                     <th>연락처</th>
-                    <td><input value={phone} placeholder={edit.phone} onChange={onChangePhone}/></td>
+                    <td className={editStyle.input}><input value={phone} placeholder={edit.phone} onChange={onChangePhone}/></td>
                 </tr>
                 <tr>
                     <th>링크</th>
