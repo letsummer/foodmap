@@ -67,20 +67,16 @@ function Tweets({id, isEdit}){
         <div className={styles.twitGrid}>
         { loading?  
             tweets.map((item, index)=>(
-                <div key={index}>
-                    {isEdit? <div>
+                <div className={styles.innerTweets} key={index}>
+                    {isEdit?
                         <input type="checkbox" id={index} onChange={(e)=>deleteBtn(e.target.checked, e.target.id)}/>
-                        {/* <span className={styles.tweetLink}>{item}</span> */}
-                        </div> 
                     : ""}
-                    <div className={styles.innerTweets}>
+                    
+                    <label htmlFor={index} className={styles.innerTweet}>
                         <blockquote id="tweets" class="twitter-tweet">
                             <a href={item}></a>
                         </blockquote>
-                        {/* <blockquote class="twitter-tweet">
-                            <a href="https://twitter.com/NoCatsNoLife_m/status/1749607844524277798">January 23, 2024</a>
-                        </blockquote> */}
-                    </div>
+                    </label>
                 </div>
             ))
             : "loading..."

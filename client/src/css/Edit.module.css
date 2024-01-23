@@ -37,4 +37,16 @@
     background-color: steelblue;
     color: white;
 }
+input[type="checkbox"]{
+    width: 5%;
+}
 
+input[type=checkbox] + label {
+    cursor: pointer;
+}
+
+input[type=checkbox]:checked + label {
+    opacity: 50%;
+    padding: 2px 0.5px;
+    z-index: 1;
+}

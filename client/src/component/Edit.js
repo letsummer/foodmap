@@ -96,7 +96,6 @@ function Edit() {
                         <p className={styles.notice}>&gt; 삭제할 트윗 선택</p>
                         <Tweets id={id} isEdit={true}></Tweets>
                     </tr>
-                    {/* <td><Tweets id={id}></Tweets></td> */}
                 </tr>
                 <tr>
                     <th>생성일</th>
