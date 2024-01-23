@@ -63,3 +63,8 @@ th {
     background-color: #1b1b1b;
     color: #ddd;
 }
+.notice{
+    margin: 0;
+    padding: 5px;
+    color: crimson;
+}

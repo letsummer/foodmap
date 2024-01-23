@@ -53,7 +53,16 @@ function Tweets({id, isEdit}){
     // urls.forEach((link)=>{
     //     // console.log(link);
     // });
+    useEffect(()=>{
+        const script = document.createElement("script");
+        script.src = "https://platform.twitter.com/widgets.js";
+        script.async = true;
+        document.body.appendChild(script);
 
+        return () => {
+            document.body.removeChild(script);
+        }
+    }, []);
 
     
     return(
@@ -66,10 +75,13 @@ function Tweets({id, isEdit}){
                         {/* <span className={styles.tweetLink}>{item}</span> */}
                         </div> 
                     : ""}
-                    <div className={styles.innerTweets}>
-                        <blockquote id="tweets" class="twitter-tweet">
+                    <div key={index} className={styles.innerTweets}>
+                        <blockquote key={index} id="tweets" class="twitter-tweet">
                             <a href={item}></a>
                         </blockquote>
+                        {/* <blockquote class="twitter-tweet">
+                            <a href="https://twitter.com/NoCatsNoLife_m/status/1749607844524277798">January 23, 2024</a>
+                        </blockquote> */}
                     </div>
                 </div>
             ))

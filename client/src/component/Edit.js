@@ -93,7 +93,7 @@ function Edit() {
                     <th>추천트윗</th>
                     <tr>
                         <Twitter></Twitter>
-                        <p>&gt; 삭제할 트윗 선택</p>
+                        <p className={styles.notice}>&gt; 삭제할 트윗 선택</p>
                         <Tweets id={id} isEdit={true}></Tweets>
                     </tr>
                     {/* <td><Tweets id={id}></Tweets></td> */}
