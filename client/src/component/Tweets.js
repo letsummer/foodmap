@@ -54,29 +54,25 @@ function Tweets({id, isEdit}){
     //     // console.log(link);
     // });
     useEffect(()=>{
-        const script = document.createElement("script");
-        script.src = "https://platform.twitter.com/widgets.js";
-        script.async = true;
-        document.body.appendChild(script);
-
-        return () => {
-            document.body.removeChild(script);
-        }
-    }, []);
+        // const script = document.createElement("script");
+        // script.src = "https://platform.twitter.com/widgets.js";
+        // script.async = true;
+        // document.body.appendChild(script);
+    });
 
     
     return(
         <div className={styles.twitGrid}>
         { loading?  
             tweets.map((item, index)=>(
-                <div>
-                    {isEdit? <div key={index}>
+                <div key={index}>
+                    {isEdit? <div>
                         <input type="checkbox" id={index} onChange={(e)=>deleteBtn(e.target.checked, e.target.id)}/>
                         {/* <span className={styles.tweetLink}>{item}</span> */}
                         </div> 
                     : ""}
-                    <div key={index} className={styles.innerTweets}>
-                        <blockquote key={index} id="tweets" class="twitter-tweet">
+                    <div className={styles.innerTweets}>
+                        <blockquote id="tweets" class="twitter-tweet">
                             <a href={item}></a>
                         </blockquote>
                         {/* <blockquote class="twitter-tweet">
